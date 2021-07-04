@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,100;1,800&display=swap');
+*{
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+    font:15pt Arial;    
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(0,45,98,1) 100%);
+    
+}
+
+header {
+  color: white;
+  text-align: center;
+
+}
+#tCad{
+font-weight: bolder;
+}
+section {
+  text-align: center;
+  background-color: #F0F8FF;
+  border-radius: 10px;
+  padding: 15px;
+  width: 500px;
+  margin: auto;
+  box-shadow: 5px 5px 10px white;
+}
+
+#adBotao{
+  background-color: rgb(63,94,251);
+  cursor: pointer;
+  font-weight: bolder;
+  letter-spacing: 0.8px;
+  text-align:center;
+  padding: 2px;
+  width:450px;  
+  height:30px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.384);
+  opacity: 1;
+  
+}
+#adBotao:hover{
+  opacity: 0.9;
+} 
+#resAd{
+  
+  background-color: #F0F8FF;
+  margin-top: 30px;
+}
+/*===========RODAPE=======*/
+footer {
+  margin-top: 0px;  
+  color: white;
+  text-align: center;  
+  font-style: bold;
+}
+footer a {
+  color: rgb(7, 18, 73);
+  text-decoration: none;
+}
+footer a:hover {
+  color: rgba(0,45,98,1);  
+
+}
+
+    </style>
+
+	<title>Calculadora de Anúncios</title>
+</head>
+
+<body>
+	<header>
+		<h1>Calculadora de Projeção de Alcance de Anúncio Online</h1>
+	</header>
+	<section>
+		<div id="tCad">
+			<p>Faça seu cálculo abaixo:</p>
+		</div>
+
+		<form>
+			
+			<div class="adCalc">
+				<label for="adIvest">Valor do Investimento:</label>
+				<input type="number" name="adIvest" id="valorInvestimento" size="20" maxlength="30" min="1" max="99999"
+					placeholder="R$" />
+			</div> <br />
+
+			<div class="cadastroCliente">
+				<input type="button" name="adBotao" id="adBotao" size="20" maxlength="30" value="Calcular" />
+			</div>
+		</form>
+	</section>
+	<section id="resAd">
+
+		<div id="res">
+			<p>Preencha os dados acima para ver o resultado!</p>
+		</div>
+
+	</section>
+
+	<script>
+		e = document.getElementById("valorInvestimento")
+		document.getElementById("adBotao").onclick = function (e) {
+        calculoAd(e);
+		}
+
+        function calculoAd() {
+
+//30 pessoas visualizam o anuncio original (nao compartilhado) a cada R$ 1,00 investido. 
+adView = (e.valueAsNumber * 30)
+
+//a cada 100 pessoas que visualizam o anuncio 12 clicam nele. 
+adClick = (e.valueAsNumber * 12)/100
+
+//a cada 20 pessoas que clicam no anuncio 3 compartilham nas redes sociais. 
+shareAd = (adClick * 3)/20
+
+//cada compartilhamento nas redes sociais gera 40 novas visualizacoees. 
+totView = (shareAd * 40)*4 
+
+
+res.innerHTML = ""
+res.innerHTML += `<p>Valor total investido: <strong>R$ ${Math.floor(e.valueAsNumber)}</strong></p>`
+res.innerHTML += `<p>Quantidade máxima de visualizações: <strong> ${Math.floor(adView)}</strong></p>`
+res.innerHTML += `<p>Quantidade máxima de cliques: <strong> ${Math.floor(adClick)}</strong></p>`
+res.innerHTML += `<p>Quantidade máxima de compartilhamentos: <strong>${Math.floor(totView)}</strong></p>`
+}
+	</script>
+
+	<footer>
+		<p>&copy; Agência Divulga Tudo</p>
+		<p>Feito por: <a href="https://github.com/agnr-gab" target="_blank">Arê Nascimento</a></p>
+	</footer>
+
+</body>
+
+</html>
